@@ -1,0 +1,67 @@
+ol{
+    list-style: none;
+  }
+  
+  body{
+    margin: 0;
+    overflow: hidden;
+  }
+  
+  .actions{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .actions >#brush{
+    display: none;
+  }
+  
+  .actions >#eraser{
+    display: inline-block;
+  }
+  
+  .actions.x > #brush{
+    display: inline-block;
+  }
+  
+  .actions.x > #eraser{
+    display: none;
+  }
+  
+  li{
+    position: fixed;
+    border: 1px solid;
+    border-radius: 50%;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+  }
+  
+  #black{
+    bottom: 0;
+    left: 20%;
+    background: black;
+    color: black;
+  }
+  
+  #red{
+    bottom: 0;
+    left: 30%;
+    background: red;
+    color: red;
+  }
+  
+  #green{
+    bottom: 0;
+    left: 40%;
+    background: green;
+    color: green;
+  }
+  
+  #blue{
+    bottom: 0;
+    left: 50%;
+    background: blue;
+    color: blue;
+  }
