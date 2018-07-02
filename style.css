@@ -1,5 +1,11 @@
-ol{
+  ol{ 
     list-style: none;
+  }
+
+  #xxx {
+    display: fixed;
+    top: 0;
+    left: 0;
   }
   
   body{
@@ -9,59 +15,75 @@ ol{
   
   .actions{
     position: fixed;
-    bottom: 0;
-    left: 0;
+    top: 10%;
+    left: 5%;
   }
-  
-  .actions >#brush{
-    display: none;
-  }
-  
-  .actions >#eraser{
-    display: inline-block;
-  }
-  
-  .actions.x > #brush{
-    display: inline-block;
-  }
-  
-  .actions.x > #eraser{
-    display: none;
+
+  ol{
+    position: fixed;
+    top: 20%;
+    left: 5%;
+    padding: 0;
   }
   
   li{
-    position: fixed;
     border: 1px solid;
     border-radius: 50%;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 1.75em;
+    height: 1.75em;
+    margin: 15px 1em;
   }
   
   #black{
-    bottom: 0;
-    left: 20%;
     background: black;
     color: black;
   }
   
   #red{
-    bottom: 0;
-    left: 30%;
     background: red;
     color: red;
   }
   
   #green{
-    bottom: 0;
-    left: 40%;
     background: green;
     color: green;
   }
   
   #blue{
-    bottom: 0;
-    left: 50%;
     background: blue;
     color: blue;
+  }
+
+  .color{
+    transition: all 0.3s;
+  }
+
+  .color.active{
+    transform: scale(1.2);
+    box-shadow: 0px 0px 4px 2px #bbb;
+  }
+
+  .icon {
+    width: 2.5em; height: 2.5em;
+    vertical-align: -0.4em;
+    fill: currentColor;
+    overflow: hidden;
+    margin: 0 1em;
+  }
+
+  .actions svg{
+    transition: all 0.3s;
+  }
+
+  .actions svg.active{
+    fill: red;
+    transform: scale(1.2);
+  }
+
+  #clear:hover{
+    fill: grey;
+  }
+
+  #download:hover{
+    fill: grey;
   }

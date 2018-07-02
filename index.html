@@ -1,24 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="description" content="[add your bin description]画布" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+  <meta name="description" content="[add your bin description]画布" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <meta charset="utf-8">
-  <title>JS Bin</title>
+  <title>简画</title>
 </head>
+
 <body>
-<canvas id="xxx" width=300 height=300></canvas>
+  <canvas id="xxx" width=300 height=300></canvas>
   <div id="actions" class="actions">
-    <button id='eraser'>橡皮</button>
-    <button id='brush'>画笔</button>
+    <svg class="icon" id="pen">
+      <use xlink:href="#icon-pen"></use>
+    </svg>
+    <svg class="icon" id="eraser">
+      <use xlink:href="#icon-eraser1"></use>
+    </svg>
+    <svg class="icon" id="clear">
+      <use xlink:href="#icon-trash2"></use>
+    </svg>
+    <svg class="icon" id="download">
+      <use xlink:href="#icon-download"></use>
+    </svg>
   </div>
   <ol>
-    <li id='black'></li>
-    <li id='red'></li>
-    <li id='green'></li>
-    <li id='blue'></li>
+    <li class='color active' id='black'></li>
+    <li class='color' id='red'></li>
+    <li class='color' id='green'></li>
+    <li class='color' id='blue'></li>
   </ol>
+  <script src="http://at.alicdn.com/t/font_730196_xobdoym9oq.js"></script>
   <script src="main.js"></script>
 </body>
+
 </html>

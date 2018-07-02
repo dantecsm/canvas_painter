@@ -37,6 +37,11 @@ window.onresize = function () {
 }
 
 function listenToUser(yyy) {
+    listenToMouse(yyy);
+    listenToClick(yyy);
+}
+
+function listenToMouse(yyy) {
     if (document.body.ontouchstart !== undefined) {
         yyy.ontouchstart = function (e) {
             using = true;
@@ -96,35 +101,67 @@ function listenToUser(yyy) {
             }
         }
 
-        yyy.onmouseup = function (e) {
+        document.body.onmouseup = function (e) {
             using = false;
             lastPoint = { x: undefined, y: undefined }
         }
     }
+}
+
+
+function listenToClick(yyy){
+    pen.onclick = function () {
+        eraserEnabled = false
+        pen.classList.add('active')
+        eraser.classList.remove('active')
+    }
 
     eraser.onclick = function () {
         eraserEnabled = true
-        actions.className = 'actions x'
+        eraser.classList.add('active')
+        pen.classList.remove('active')
     }
 
-    brush.onclick = function () {
-        eraserEnabled = false
-        actions.className = 'actions'
+    clear.onclick = function () {
+        context.clearRect(0, 0, yyy.width, yyy.height)
+    }
+
+    download.onclick = function() {
+        var url = yyy.toDataURL("image/png")
+        var a = document.createElement('a')
+        a.href = url
+        a.download = '我的作品'
+        a.click()
     }
 
     black.onclick = function () {
-        penColor = "black";
+        penColor = "black"
+        removeAll()
+        black.classList.add('active')
     }
 
     red.onclick = function () {
         penColor = "red";
+        removeAll()
+        red.classList.add('active')
     }
 
     green.onclick = function () {
         penColor = "green";
+        removeAll()
+        green.classList.add('active')
     }
 
     blue.onclick = function () {
         penColor = "blue";
+        removeAll()
+        blue.classList.add('active')
+    }
+
+    function removeAll(){
+        black.classList.remove('active')
+        red.classList.remove('active')
+        green.classList.remove('active')
+        blue.classList.remove('active')
     }
 }
