@@ -11,21 +11,29 @@
 
 <body>
   <canvas id="xxx" width=300 height=300></canvas>
-  <div id="actions" class="actions">
-    <svg class="icon" id="pen">
-      <use xlink:href="#icon-pen"></use>
-    </svg>
-    <svg class="icon" id="eraser">
-      <use xlink:href="#icon-eraser1"></use>
-    </svg>
-    <svg class="icon" id="clear">
-      <use xlink:href="#icon-trash2"></use>
-    </svg>
-    <svg class="icon" id="download">
-      <use xlink:href="#icon-download"></use>
-    </svg>
+  <div class="toolBar">
+    <div class="toolBar-inner clearfix">
+      <div id="actions" class="actions">
+        <svg class="icon" id="pen">
+          <use xlink:href="#icon-pen"></use>
+        </svg>
+        <svg class="icon" id="eraser">
+          <use xlink:href="#icon-eraser1"></use>
+        </svg>
+        <svg class="icon" id="clear">
+          <use xlink:href="#icon-trash2"></use>
+        </svg>
+        <svg class="icon" id="download">
+          <use xlink:href="#icon-download"></use>
+        </svg>
+      </div>
+      <div class="size clearfix">
+        <div class="size" id="thin"></div>
+        <div class="size" id="bold"></div>
+      </div>
+    </div>
   </div>
-  <ol>
+  <ol class="colorPad">
     <li class='color active' id='black'></li>
     <li class='color' id='red'></li>
     <li class='color' id='green'></li>

@@ -1,89 +1,71 @@
-  ol{ 
-    list-style: none;
+  .clearfix::after{
+    content: '';
+    display: block;
+    clear: both;
   }
-
-  #xxx {
-    display: fixed;
-    top: 0;
-    left: 0;
+  ol{ list-style: none;
   }
-  
-  body{
-    margin: 0;
-    overflow: hidden;
+  #xxx {display: fixed;top: 0;left: 0;
   }
-  
-  .actions{
-    position: fixed;
-    top: 10%;
-    left: 5%;
+  .eraserOn{
+    /* cursor: url(./img/eraserRect.png) 20 0,auto; */
   }
-
-  ol{
-    position: fixed;
-    top: 20%;
-    left: 5%;
-    padding: 0;
+  body{margin: 0;overflow: hidden;
   }
-  
-  li{
-    border: 1px solid;
-    border-radius: 50%;
-    width: 1.75em;
-    height: 1.75em;
-    margin: 15px 1em;
+  .toolBar{position: fixed;top: 10%;left: 5%;
   }
-  
-  #black{
-    background: black;
-    color: black;
+  .toolBar-inner{
+    position: relative;
   }
-  
-  #red{
-    background: red;
-    color: red;
+  .toolBar-inner >.actions{
+    float: left;
   }
-  
-  #green{
-    background: green;
-    color: green;
+  .toolBar-inner >.size{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    height: 2.5em;
   }
-  
-  #blue{
-    background: blue;
-    color: blue;
-  }
-
-  .color{
-    transition: all 0.3s;
-  }
-
-  .color.active{
-    transform: scale(1.2);
-    box-shadow: 0px 0px 4px 2px #bbb;
-  }
-
-  .icon {
-    width: 2.5em; height: 2.5em;
-    vertical-align: -0.4em;
-    fill: currentColor;
-    overflow: hidden;
+  .size > #thin{
+    float: left;
+    width: 2em;
+    height: 0.4em;
     margin: 0 1em;
   }
-
-  .actions svg{
-    transition: all 0.3s;
+  .size > #bold{
+    float: left;
+    width: 2em;
+    height: 0.7em;
+    margin: 0 1em;
   }
-
-  .actions svg.active{
-    fill: red;
-    transform: scale(1.2);
+  .size > div{
+    background-color: black;
   }
-
-  #clear:hover{
-    fill: grey;
+  .size.active{
+    background: red;
   }
-
-  #download:hover{
-    fill: grey;
+  .icon { width: 2.5em; height: 2.5em;vertical-align: -0.4em;fill: currentColor;overflow: hidden;margin: 0 1em;
+  }
+  .actions svg{ transition: all 0.3s;
+  }
+  .actions svg.active{ fill: red;transform: scale(1.2);
+  }
+  #clear:hover,#download:hover{ fill: grey;
+  }
+  .colorPad{ position: fixed;top: 20%;left: 5%;padding: 0;
+  }
+  li{ border: 1px solid;border-radius: 50%;width: 1.75em;height: 1.75em;margin: 15px 1em;
+  }
+  .color{ transition: all 0.3s;
+  }
+  .color.active{ transform: scale(1.2);box-shadow: 0px 0px 4px 2px #bbb;
+  }
+  #black{ background: black;color: black;
+  }
+  #red{ background: red;color: red;
+  }
+  #green{ background: green;color: green;
+  }
+  #blue{ background: blue;color: blue;
   }

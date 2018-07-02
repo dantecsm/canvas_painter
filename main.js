@@ -7,7 +7,7 @@ autoSetCanvasSize();
 //环境变量
 var using = false;
 var eraserEnabled = false;
-var penWidth = 4;
+var penWidth = 3;
 var penColor = 'black';
 var lastPoint = { x: undefined, y: undefined };
 var newPoint = { x: undefined, y: undefined };
@@ -92,6 +92,7 @@ function listenToMouse(yyy) {
             if (using) {
                 if (eraserEnabled) {
                     context.clearRect(x - 10, y - 10, 20, 20)
+                    yyy.className = 'eraserOn'
                 }
                 else {
                     newPoint = { x: x, y: y };
@@ -103,6 +104,7 @@ function listenToMouse(yyy) {
 
         document.body.onmouseup = function (e) {
             using = false;
+            yyy.className = ''
             lastPoint = { x: undefined, y: undefined }
         }
     }
@@ -132,6 +134,18 @@ function listenToClick(yyy){
         a.href = url
         a.download = '我的作品'
         a.click()
+    }
+
+    thin.onclick = function () {
+        penWidth = 3;
+        thin.classList.add('active')
+        bold.classList.remove('active')
+    }
+
+    bold.onclick = function () {
+        penWidth = 6;
+        thin.classList.remove('active')
+        bold.classList.add('active')
     }
 
     black.onclick = function () {
