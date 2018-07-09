@@ -5,12 +5,12 @@
   }
   ol{ list-style: none;
   }
-  #xxx {display: fixed;top: 0;left: 0;
+  #xxx {position: fixed;top: 0;left: 0;
   }
   .eraserOn{
     /* cursor: url(./img/eraserRect.png) 20 0,auto; */
   }
-  body{margin: 0;overflow: hidden;
+  body{position: fixed;margin: 0;overflow: hidden;
   }
   .toolBar{position: fixed;top: 10%;left: 5%;
   }
