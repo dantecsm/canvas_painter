@@ -5,6 +5,24 @@
   }
   ol{ list-style: none;
   }
+  
+  #tool{
+    position: fixed;
+    top:-60px;
+    right:-60px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: rgba(60, 60, 60, 0.8);
+    transition:all 0.4s;
+    z-index: 11;
+  }
+
+  #tool:hover{
+    transform: scale(1.2);
+    background-color: rgba(40, 40, 40, 0.9);
+  }
+  
   #xxx {position: fixed;top: 0;left: 0;
   }
   .eraserOn{

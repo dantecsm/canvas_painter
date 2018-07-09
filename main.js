@@ -112,6 +112,13 @@ function listenToMouse(yyy) {
 
 
 function listenToClick(yyy){
+    tool.onclick = function () {
+        imgAddr = prompt('请输入图片网址')
+        if(imgAddr){
+            document.body.style.backgroundImage = "url(" + imgAddr + ")"
+        }
+    }
+
     pen.onclick = function () {
         eraserEnabled = false
         pen.classList.add('active')
