@@ -28,7 +28,7 @@
   .eraserOn{
     /* cursor: url(./img/eraserRect.png) 20 0,auto; */
   }
-  body{position: fixed;margin: 0;overflow: hidden;background-size: cover;background-image:url(img/wallpaper201801.png)
+  body{position: fixed;margin: 0;overflow: hidden;background-size: cover;background-image:url()
   }
   .toolBar{position: fixed;top: 10%;left: 5%;
   }

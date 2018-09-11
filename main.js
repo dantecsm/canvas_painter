@@ -32,7 +32,7 @@ function drawLine(lastPoint, newPoint) {
     context.closePath();
 }
 
-window.onresize = function () {
+window.onresize = function() {
     autoSetCanvasSize();
 }
 
@@ -43,7 +43,8 @@ function listenToUser(yyy) {
 
 function listenToMouse(yyy) {
     if (document.body.ontouchstart !== undefined) {
-        yyy.ontouchstart = function (e) {
+        yyy.ontouchstart = function(e) {
+            e.preventDefault()
             using = true;
             var x = e.touches[0].clientX;
             var y = e.touches[0].clientY;
@@ -54,14 +55,14 @@ function listenToMouse(yyy) {
             }
         }
 
-        yyy.ontouchmove = function (e) {
+        yyy.ontouchmove = function(e) {
+            e.preventDefault()
             var x = e.touches[0].clientX;
             var y = e.touches[0].clientY;
             if (using) {
                 if (eraserEnabled) {
                     context.clearRect(x - 10, y - 10, 20, 20)
-                }
-                else {
+                } else {
                     newPoint = { x: x, y: y };
                     drawLine(lastPoint, newPoint);
                     lastPoint = newPoint;
@@ -69,13 +70,14 @@ function listenToMouse(yyy) {
             }
         }
 
-        yyy.ontouchend = function (e) {
+        yyy.ontouchend = function(e) {
             using = false;
             lastPoint = { x: undefined, y: undefined }
         }
 
     } else {
-        yyy.onmousedown = function (e) {
+        yyy.onmousedown = function(e) {
+            e.preventDefault()
             using = true;
             var x = e.clientX;
             var y = e.clientY;
@@ -86,15 +88,15 @@ function listenToMouse(yyy) {
             }
         }
 
-        yyy.onmousemove = function (e) {
+        yyy.onmousemove = function(e) {
+            e.preventDefault()
             var x = e.clientX;
             var y = e.clientY;
             if (using) {
                 if (eraserEnabled) {
                     context.clearRect(x - 10, y - 10, 20, 20)
                     yyy.className = 'eraserOn'
-                }
-                else {
+                } else {
                     newPoint = { x: x, y: y };
                     drawLine(lastPoint, newPoint);
                     lastPoint = newPoint;
@@ -102,7 +104,7 @@ function listenToMouse(yyy) {
             }
         }
 
-        document.body.onmouseup = function (e) {
+        document.body.onmouseup = function(e) {
             using = false;
             yyy.className = ''
             lastPoint = { x: undefined, y: undefined }
@@ -111,27 +113,26 @@ function listenToMouse(yyy) {
 }
 
 
-function listenToClick(yyy){
-    tool.onclick = function () {
-        imgAddr = prompt('请输入图片网址')
-        if(imgAddr){
-            document.body.style.backgroundImage = "url(" + imgAddr + ")"
-        }
+function listenToClick(yyy) {
+    tool.onclick = function() {
+        let imgAddr = prompt('请输入图片网址', '0w0')
+        console.log(imgAddr)
+        document.body.style.backgroundImage = "url(" + imgAddr + ")"
     }
 
-    pen.onclick = function () {
+    pen.onclick = function() {
         eraserEnabled = false
         pen.classList.add('active')
         eraser.classList.remove('active')
     }
 
-    eraser.onclick = function () {
+    eraser.onclick = function() {
         eraserEnabled = true
         eraser.classList.add('active')
         pen.classList.remove('active')
     }
 
-    clear.onclick = function () {
+    clear.onclick = function() {
         context.clearRect(0, 0, yyy.width, yyy.height)
     }
 
@@ -143,43 +144,43 @@ function listenToClick(yyy){
         a.click()
     }
 
-    thin.onclick = function () {
+    thin.onclick = function() {
         penWidth = 3;
         thin.classList.add('active')
         bold.classList.remove('active')
     }
 
-    bold.onclick = function () {
+    bold.onclick = function() {
         penWidth = 6;
         thin.classList.remove('active')
         bold.classList.add('active')
     }
 
-    black.onclick = function () {
+    black.onclick = function() {
         penColor = "black"
         removeAll()
         black.classList.add('active')
     }
 
-    red.onclick = function () {
+    red.onclick = function() {
         penColor = "red";
         removeAll()
         red.classList.add('active')
     }
 
-    green.onclick = function () {
+    green.onclick = function() {
         penColor = "green";
         removeAll()
         green.classList.add('active')
     }
 
-    blue.onclick = function () {
+    blue.onclick = function() {
         penColor = "blue";
         removeAll()
         blue.classList.add('active')
     }
 
-    function removeAll(){
+    function removeAll() {
         black.classList.remove('active')
         red.classList.remove('active')
         green.classList.remove('active')
