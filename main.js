@@ -7,7 +7,7 @@ autoSetCanvasSize();
 //环境变量
 var using = false;
 var eraserEnabled = false;
-var penWidth = 3;
+var penWidth = 4;
 var penColor = 'black';
 var lastPoint = { x: undefined, y: undefined };
 var newPoint = { x: undefined, y: undefined };
@@ -26,6 +26,10 @@ function drawLine(lastPoint, newPoint) {
     context.beginPath();
     context.lineWidth = penWidth;
     context.strokeStyle = penColor;
+
+    context.lineCap = 'round'  //保证画粗笔不会出现毛线
+    context.lineJoin = 'round'
+
     context.moveTo(lastPoint.x, lastPoint.y);
     context.lineTo(newPoint.x, newPoint.y);
     context.stroke();
@@ -145,13 +149,13 @@ function listenToClick(yyy) {
     }
 
     thin.onclick = function() {
-        penWidth = 3;
+        penWidth = 4;
         thin.classList.add('active')
         bold.classList.remove('active')
     }
 
     bold.onclick = function() {
-        penWidth = 6;
+        penWidth = 8;
         thin.classList.remove('active')
         bold.classList.add('active')
     }
