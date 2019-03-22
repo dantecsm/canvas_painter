@@ -1,0 +1,50 @@
+把画板按视觉元素拆分为三个模块：canvas, menu, slideBar
+
+canvas：
+data：{bold: 1,curObject: 'pen',color: '#000',using: false,lastPoint: {},newPoint: {}}
+menu：
+data {}
+slideBar:
+data：{}
+
+eventHub
+第一系统
+  -setBold
+  -select
+  -setColor
+  -setUsing
+  -setLastPoint
+  -setNewPoint
+  -download
+第二系统
+  select
+  setColor
+  setUsing
+  setLastPoint
+  setNewPoint
+  download
+第三系统
+  setBold
+
+第一系统 canvas
+  on('setXXXXXX')
+    修改自己身上对应的数据
+  on('download')
+    调用下载函数
+
+第二系统 menu
+  监听身上元素的点击并 emit
+
+第三系统 slideBar
+  监听身上元素的滑动并 emit
+
+
+
+
+
+
+
+
+
+
+

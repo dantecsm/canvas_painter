@@ -3,45 +3,22 @@
 
 <head>
   <meta name="description" content="[add your bin description]画布" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta charset="utf-8">
-  <title>简画</title>
+  <title>我的画板</title>
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-  <div id="tool"></div>
-  <canvas id="xxx" width=300 height=300></canvas>
-  <div class="toolBar">
-    <div class="toolBar-inner clearfix">
-      <div id="actions" class="actions">
-        <svg class="icon" id="pen">
-          <use xlink:href="#icon-pen"></use>
-        </svg>
-        <svg class="icon" id="eraser">
-          <use xlink:href="#icon-eraser1"></use>
-        </svg>
-        <svg class="icon" id="clear">
-          <use xlink:href="#icon-trash2"></use>
-        </svg>
-        <svg class="icon" id="download">
-          <use xlink:href="#icon-download"></use>
-        </svg>
-      </div>
-      <div class="size clearfix">
-        <div class="size" id="thin"></div>
-        <div class="size" id="bold"></div>
-      </div>
-    </div>
-  </div>
-  <ol class="colorPad">
-    <li class='color active' id='black'></li>
-    <li class='color' id='red'></li>
-    <li class='color' id='green'></li>
-    <li class='color' id='blue'></li>
-  </ol>
-  <script src="https://at.alicdn.com/t/font_730196_xobdoym9oq.js"></script>
-  <script src="main.js"></script>
+  <canvas id="canvas" class="canvas" width=300 height=300></canvas>
+  <section class="menuBar"></section>
+  <section class="slideBar"></section>
+  <script src="//at.alicdn.com/t/font_730196_e0a0m4stn.js"></script>
+  <script src="./vendor/jquery.min.js"></script>
+  <script src="./js/eventHub.js"></script>
+  <script src="./js/canvas.js"></script>
+  <script src="./js/menuBar.js"></script>
+  <script src="./js/slideBar.js"></script>
 </body>
 
 </html>
