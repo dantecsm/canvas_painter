@@ -119,7 +119,7 @@ function listenToMouse(yyy) {
 
 function listenToClick(yyy) {
     tool.onclick = function() {
-        let imgAddr = prompt('请输入图片网址', '0w0')
+        let imgAddr = prompt('请输入图片网址', '')
         console.log(imgAddr)
         document.body.style.backgroundImage = "url(" + imgAddr + ")"
     }

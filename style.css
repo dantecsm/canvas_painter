@@ -30,7 +30,7 @@
   }
   body{position: fixed;margin: 0;overflow: hidden;background-size: cover;background-image:url()
   }
-  .toolBar{position: fixed;top: 10%;left: 5%;
+  .toolBar{position: fixed;top: 5%;left: 5%;
   }
   .toolBar-inner{
     position: relative;
@@ -71,7 +71,7 @@
   }
   #clear:hover,#download:hover{ fill: grey;
   }
-  .colorPad{ position: fixed;top: 20%;left: 5%;padding: 0;
+  .colorPad{ position: fixed;top: 15%;left: 5%;padding: 0;
   }
   li{ border: 1px solid;border-radius: 50%;width: 1.75em;height: 1.75em;margin: 15px 1em;
   }
