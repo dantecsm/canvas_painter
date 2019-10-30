@@ -66,7 +66,7 @@ paintSelector.oninput = function(e) {
 backgroundSelector.oninput = function(e) {
     let file = e.currentTarget.files[0]
     let url = URL.createObjectURL(file)
-    document.documentElement.style.backgroundImage = `url(${url})`
+    document.body.style.backgroundImage = `url(${url})`
 }
 
 function listenToUser(canvas) {
