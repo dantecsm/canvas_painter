@@ -10,37 +10,50 @@
 </head>
 
 <body>
-  <div id="tool"></div>
-  <canvas id="xxx" width=300 height=300></canvas>
-  <div class="toolBar">
-    <div class="toolBar-inner clearfix">
-      <div id="actions" class="actions">
-        <svg class="icon" id="pen">
-          <use xlink:href="#icon-pen"></use>
-        </svg>
-        <svg class="icon" id="eraser">
-          <use xlink:href="#icon-eraser1"></use>
-        </svg>
-        <svg class="icon" id="clear">
-          <use xlink:href="#icon-trash2"></use>
-        </svg>
-        <svg class="icon" id="download">
-          <use xlink:href="#icon-download"></use>
-        </svg>
-      </div>
-      <div class="size clearfix">
-        <div class="size" id="thin"></div>
-        <div class="size" id="bold"></div>
-      </div>
-    </div>
-  </div>
-  <ol class="colorPad">
-    <li class='color active' id='black'></li>
-    <li class='color' id='red'></li>
-    <li class='color' id='green'></li>
-    <li class='color' id='blue'></li>
-  </ol>
-  <script src="https://at.alicdn.com/t/font_730196_xobdoym9oq.js"></script>
+  <canvas id="painter" width=300 height=300 crossOrigin=""></canvas>
+  <div class="controller">
+  	<div class="tools">
+	    <svg class="icon" id="pen">
+	      <use xlink:href="#icon-pencil"></use>
+	    </svg>
+	    <svg class="icon" id="eraser">
+	      <use xlink:href="#icon-eraser"></use>
+	    </svg>
+	    <svg class="icon" id="color">
+	      <use xlink:href="#icon-color"></use>
+	    </svg>
+	    <svg class="icon" id="background">
+	      <use xlink:href="#icon-background"></use>
+	    </svg>
+	    <svg class="icon" id="clear">
+	      <use xlink:href="#icon-clear"></use>
+	    </svg>
+	    <svg class="icon" id="upload">
+	    	<use xlink:href="#icon-upload"></use>
+	    </svg>
+	    <svg class="icon" id="download">
+	      <use xlink:href="#icon-download"></use>
+	    </svg>
+	  </div>
+	  <div class="sizePad">
+	  	<div class="slidecontainer">
+	  		<span class="value" id="sizeVal">10</span>
+			  <input type="range" id="size" min="1" max="40" value="10" class="slider" id="myRange">
+			</div>
+	  </div>
+	  <div class="colorPad">
+			<div class='color active' id='black'></div>
+			<div class='color' id='red'></div>
+			<div class='color' id='green'></div>
+			<div class='color' id='blue'></div>
+	  </div>
+	  <div class="subTool" style="display:none;">
+	  	<input type="color" id="colorSelector">
+	  	<input type="file" id="paintSelector">
+	  	<input type="file" id="backgroundSelector">
+	  </div>
+	</div>
+  <script src="https://at.alicdn.com/t/font_730196_tq19tyvo2j.js"></script>
   <script src="main.js"></script>
 </body>
 
