@@ -12,6 +12,9 @@ var penColor = 'black';
 var lastPoint = { x: undefined, y: undefined };
 var newPoint = { x: undefined, y: undefined };
 
+let PEN_WIDTH_MIN = 1
+let PEN_WIDTH_MAX = 40
+
 /*2.监听用户动作*/
 listenToUser(canvas);
 
@@ -42,6 +45,7 @@ window.onresize = function() {
 
 colorSelector.oninput = function(e) {
     penColor = e.currentTarget.value
+    removeOtherColor()
 }
 
 paintSelector.oninput = function(e) {
@@ -142,6 +146,11 @@ function bindMouseEvent(canvas) {
         canvas.className = ''
         lastPoint = { x: undefined, y: undefined }
     }
+
+    canvas.onwheel = function(e) {
+        let value = penWidth - e.deltaY / 100
+        setPenWidth(value)
+    }
 }
 
 function listenToClick(canvas) {
@@ -182,41 +191,40 @@ function listenToClick(canvas) {
     }
 
     size.oninput = function(e) {
-        let {value, min, max} = e.currentTarget
-        penWidth = value
-        let left = 85 * value / (max - min) + 5
-        sizeVal.style.left = `${left}%`
-        sizeVal.innerText = value
+        setPenWidth(e.currentTarget.value)
     }
 
-    black.onclick = function() {
-        penColor = "black"
-        removeOtherColor()
-        black.classList.add('active')
+    colorPad.onclick = function(e) {
+        penColor = e.target.dataset.source
+        activateColor(e.target)
     }
 
-    red.onclick = function() {
-        penColor = "red";
-        removeOtherColor()
-        red.classList.add('active')
-    }
-
-    green.onclick = function() {
-        penColor = "green";
-        removeOtherColor()
-        green.classList.add('active')
-    }
-
-    blue.onclick = function() {
-        penColor = "blue";
-        removeOtherColor()
-        blue.classList.add('active')
-    }
-
-    function removeOtherColor() {
-        let colors = document.getElementsByClassName('color')
-        for(let i=0; i<colors.length; i++) {
-            colors[i].classList.remove('active')
+    colorPad.ondblclick = function(e) {
+        frequentColorSelector.click()
+        let that = e.target
+        frequentColorSelector.oninput = function() {
+            penColor = that.style.backgroundColor = that.dataset.source = this.value
+            this.value = ''
         }
     }
+}
+
+function activateColor(el) {
+    removeOtherColor()
+    el.classList.add('active')
+}
+
+function removeOtherColor() {
+    let colors = document.getElementsByClassName('color')
+    for(let i=0; i<colors.length; i++) {
+        colors[i].classList.remove('active')
+    }
+}
+
+function setPenWidth(value) {
+    if(value < PEN_WIDTH_MIN || value > PEN_WIDTH_MAX) return
+    penWidth = size.value = value
+    let left = value * (92 - 7) / (40 - 1) + 5
+    sizeVal.style.left = `${left}%`
+    sizeVal.innerText = value
 }
