@@ -7,7 +7,6 @@ function drawLine(lastPoint, newPoint) {
     context.beginPath();
     context.lineWidth = penWidth;
     context.strokeStyle = penColor;
-
     context.lineCap = 'round'  //保证画粗笔不会出现毛线
     context.lineJoin = 'round'
 
@@ -15,6 +14,18 @@ function drawLine(lastPoint, newPoint) {
     context.lineTo(newPoint.x, newPoint.y);
     context.stroke();
     context.closePath();
+}
+
+function drawBezierLine([p1, p2, p3, p4]) {
+    context.beginPath();
+    context.lineWidth = penWidth;
+    context.strokeStyle = penColor;
+    context.lineCap = 'round'
+    context.lineJoin = 'round'
+
+    context.moveTo(p1.x, p1.y)
+    context.bezierCurveTo(p2.x, p2.y, p3.x, p3.y, p4.x, p4.y)
+    context.stroke()
 }
 
 function activateColor(el) {

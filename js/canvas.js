@@ -28,7 +28,7 @@ function onCanvasMousedown (e) {
       if (eraserEnabled) {
           context.clearRect(x - 10, y - 10, 20, 20)
       } else {
-          lastPoint = { x: x, y: y };
+          bezierQueue = [{x, y}, {x, y}, {x, y}]
       }
 }
 
@@ -41,9 +41,11 @@ function onCanvasMousemove (e) {
             context.clearRect(x - 10, y - 10, 20, 20)
             canvas.className = 'eraserOn'
         } else {
-            newPoint = { x: x, y: y };
-            drawLine(lastPoint, newPoint);
-            lastPoint = newPoint;
+            bezierQueue.push({x, y})
+            if(bezierQueue.length === 4) {
+                drawBezierLine(bezierQueue)
+                bezierQueue.splice(0, 3)
+            }
         }
     }
 }
@@ -51,7 +53,7 @@ function onCanvasMousemove (e) {
 function onCanvasMouseup (e) {
     using = false;
     canvas.className = ''
-    lastPoint = { x: undefined, y: undefined }
+    bezierQueue = []
 }
 
 function onCanvasWheel (e) {
@@ -67,7 +69,7 @@ function onCanvasTouchstart(e) {
     if (eraserEnabled) {
         context.clearRect(x - 10, y - 10, 20, 20)
     } else {
-        lastPoint = { x: x, y: y };
+        bezierQueue = [{x, y}, {x, y}, {x, y}]
     }
 }
 
@@ -79,14 +81,16 @@ function onCanvasTouchmove(e) {
         if (eraserEnabled) {
             context.clearRect(x - 10, y - 10, 20, 20)
         } else {
-            newPoint = { x: x, y: y };
-            drawLine(lastPoint, newPoint);
-            lastPoint = newPoint;
+             bezierQueue.push({x, y})
+            if(bezierQueue.length === 4) {
+                drawBezierLine(bezierQueue)
+                bezierQueue.splice(0, 3)
+            }
         }
     }
 }
 
 function onCanvasTouchend(e) {
     using = false;
-    lastPoint = { x: undefined, y: undefined }
+    bezierQueue = []
 }
