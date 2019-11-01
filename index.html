@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/mobile.css" media="screen and (max-width: 800px)">
+  <link href="https://cdn.bootcss.com/intro.js/2.9.3/introjs.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/intro-theme.css">
   <meta charset="utf-8">
   <title>我的画板</title>
 </head>
@@ -13,8 +15,8 @@
 <body>
   <canvas id="painter" width=300 height=300 crossOrigin=""></canvas>
   <div class="controller">
-  	<div class="tools">
-	    <svg class="icon" id="pen">
+  	<div class="buttons">
+	    <svg class="icon active" id="pen">
 	      <use xlink:href="#icon-pencil"></use>
 	    </svg>
 	    <svg class="icon" id="eraser">
@@ -26,11 +28,11 @@
 	    <svg class="icon" id="background">
 	      <use xlink:href="#icon-background"></use>
 	    </svg>
+	    <svg class="icon" id="openFile">
+	    	<use xlink:href="#icon-open"></use>
+	    </svg>
 	    <svg class="icon" id="clear">
 	      <use xlink:href="#icon-clear"></use>
-	    </svg>
-	    <svg class="icon" id="upload">
-	    	<use xlink:href="#icon-upload"></use>
 	    </svg>
 	    <svg class="icon" id="download">
 	      <use xlink:href="#icon-download"></use>
@@ -55,9 +57,17 @@
 	  	<input type="file" id="backgroundSelector">
 	  </div>
 	</div>
-  <script src="https://at.alicdn.com/t/font_730196_qpeggy8cy2l.js"></script>
+	<div class="tutorial-background">
+		<div class="content"></div>
+	</div>
+  <script src="https://at.alicdn.com/t/font_730196_wqniincdmtb.js"></script>
+  <script src="https://cdn.bootcss.com/intro.js/2.9.3/intro.js"></script>
   <script src="./js/util.js"></script>
   <script src="./js/main.js"></script>
+  <script src="./js/canvas.js"></script>
+  <script src="./js/toolbar.js"></script>
+  <script src="./js/file.js"></script>
+  <script src="./js/tutorial.js"></script>
 </body>
 
 </html>

@@ -10,7 +10,7 @@ body {position: fixed;margin: 0;overflow: hidden;background-size: cover;backgrou
 /* 工具栏 */
 .controller {position: fixed;top: 5%;left: 5%;display: flex;
 }
-.controller >div {border-left: 1px solid red;padding: 0 1em;height: 2.5em;display: flex;justify-content: center;align-items: center;
+.controller >div {border-left: 1px solid lightgrey;padding: 0 1em;height: 2.5em;display: flex;justify-content: center;align-items: center;
 }
 .controller >div:first-child {border-left: none;
 }

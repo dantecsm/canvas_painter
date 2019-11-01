@@ -36,3 +36,11 @@ function setPenWidth(value) {
     sizeVal.style.left = `${left}%`
     sizeVal.innerText = value
 }
+
+function bindEvents(hash) {
+    hash.forEach(o => o.el.addEventListener(o.ev, o.cb))
+}
+
+function canTouch() {
+    return document.body.ontouchstart!==undefined
+}
