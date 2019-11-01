@@ -1,20 +1,25 @@
-* {margin: 0; padding: 0;}
-body {position: fixed;margin: 0;overflow: hidden;background-size: cover;
+* {margin: 0; padding: 0;
 }
+body {position: fixed;margin: 0;overflow: hidden;background-size: cover;background-repeat: no-repeat;
+}
+
 #painter {position: fixed;top: 0;left: 0;
 }
+
 .controller {position: fixed;top: 5%;left: 5%;display: flex;
 }
 .controller >div {border-left: 1px solid red;padding: 0 1em;height: 2.5em;display: flex;justify-content: center;align-items: center;
 }
 .controller >div:first-child {border-left: none;
 }
+
 .icon {width: 2.5em;height: 2.5em;vertical-align: -.4em;fill: currentColor;overflow: hidden;margin: 0 .5em;transition: all .3s;
 }
 .icon.active {fill: red;transform: scale(1.2);
 }
 .icon:hover {transform: scale(1.2);
 }
+
 .size {width: 2.5em;height: 2.5em;margin: 0 .5em;display: flex;justify-content: center;align-items: center;
 }
 .size .size-inner {width: 2.5em;height: 1em;background-color: black;
@@ -25,6 +30,7 @@ body {position: fixed;margin: 0;overflow: hidden;background-size: cover;
 }
 #thin .size-inner {height: .75em;
 }
+
 .color {width: 2em;height: 2em;border-radius: 50%;transition: all .3s;margin: 0 .5em;
 }
 .color.active {transform: scale(1.25);box-shadow: 0px 0px 4px 2px #bbb;
@@ -40,18 +46,13 @@ body {position: fixed;margin: 0;overflow: hidden;background-size: cover;
 
 .slidecontainer {width: 100%;position: relative;
 }
-
 .slider {-webkit-appearance: none;width: 100%;height: .75em;border-radius: 1em;background: #d3d3d3;outline: none;opacity: 0.7;-webkit-transition: .2s;transition: opacity .2s;
 }
-
 .slider:hover {opacity: 1;
 }
-
 .slider::-webkit-slider-thumb {-webkit-appearance: none;appearance: none;width: 1.25em;height: 1.25em;border-radius: 50%;background: black;cursor: pointer;
 }
-
 .slider::-moz-range-thumb {width: 1.25em;height: 1.25em;border-radius: 50%;background: black;cursor: pointer;
 }
-
-.slidecontainer .value {position: absolute;top: -1em;left: 25%;margin-left: -.5em;font-size: 1px;color: grey;
+.slidecontainer .value {position: absolute;top: -1em;left: 22%;margin-left: -.5em;font-size: 1px;color: grey;
 }

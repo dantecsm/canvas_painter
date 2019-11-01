@@ -1,16 +1,16 @@
 /*1.初始化画布环境*/
-var canvas = document.getElementById("painter");
-var context = canvas.getContext('2d');
+let canvas = document.getElementById("painter");
+let context = canvas.getContext('2d');
 
 resizeCanvas();
 
 //环境变量
-var using = false;
-var eraserEnabled = false;
-var penWidth = 10;
-var penColor = 'black';
-var lastPoint = { x: undefined, y: undefined };
-var newPoint = { x: undefined, y: undefined };
+let using = false;
+let eraserEnabled = false;
+let penWidth = 7;
+let penColor = 'black';
+let lastPoint = { x: undefined, y: undefined };
+let newPoint = { x: undefined, y: undefined };
 
 let PEN_WIDTH_MIN = 1
 let PEN_WIDTH_MAX = 40
@@ -19,59 +19,11 @@ let PEN_WIDTH_MAX = 40
 listenToUser(canvas);
 
 
-/*3.下面是工具函数*/
-function resizeCanvas() {
-    canvas.width = document.documentElement.clientWidth
-    canvas.height = document.documentElement.clientHeight
-}
-
-function drawLine(lastPoint, newPoint) {
-    context.beginPath();
-    context.lineWidth = penWidth;
-    context.strokeStyle = penColor;
-
-    context.lineCap = 'round'  //保证画粗笔不会出现毛线
-    context.lineJoin = 'round'
-
-    context.moveTo(lastPoint.x, lastPoint.y);
-    context.lineTo(newPoint.x, newPoint.y);
-    context.stroke();
-    context.closePath();
-}
-
-window.onresize = function() {
-    resizeCanvas();
-}
-
-colorSelector.oninput = function(e) {
-    penColor = e.currentTarget.value
-    removeOtherColor()
-}
-
-paintSelector.oninput = function(e) {
-    context.clearRect(0, 0, canvas.width, canvas.height)
-    let file = e.currentTarget.files[0]
-    let url = URL.createObjectURL(file)
-    console.log(url)
-    let img = new Image()
-    img.onload = function() {
-        let offsetLeft = (canvas.width - img.width) / 2
-        let offsetTop = (canvas.height - img.height) / 2
-        context.drawImage(img, offsetLeft, offsetTop, img.width, img.height)
-    }
-    img.src = url
-    e.currentTarget.value = ''
-}
-
-backgroundSelector.oninput = function(e) {
-    let file = e.currentTarget.files[0]
-    let url = URL.createObjectURL(file)
-    document.body.style.backgroundImage = `url(${url})`
-}
-
 function listenToUser(canvas) {
-    listenToMouse(canvas);
-    listenToClick(canvas);
+    listenToMouse(canvas)
+    listenToClick(canvas)
+    listenToInput(canvas)
+    listenToResze(canvas)
 }
 
 function listenToMouse(canvas) {
@@ -82,8 +34,8 @@ function bindTouchEvent(canvas) {
     canvas.ontouchstart = function(e) {
             e.preventDefault()
             using = true;
-            var x = e.touches[0].clientX;
-            var y = e.touches[0].clientY;
+            let x = e.touches[0].clientX;
+            let y = e.touches[0].clientY;
             if (eraserEnabled) {
                 context.clearRect(x - 10, y - 10, 20, 20)
             } else {
@@ -93,8 +45,8 @@ function bindTouchEvent(canvas) {
 
         canvas.ontouchmove = function(e) {
             e.preventDefault()
-            var x = e.touches[0].clientX;
-            var y = e.touches[0].clientY;
+            let x = e.touches[0].clientX;
+            let y = e.touches[0].clientY;
             if (using) {
                 if (eraserEnabled) {
                     context.clearRect(x - 10, y - 10, 20, 20)
@@ -116,8 +68,8 @@ function bindMouseEvent(canvas) {
     canvas.onmousedown = function(e) {
         e.preventDefault()
         using = true;
-        var x = e.clientX;
-        var y = e.clientY;
+        let x = e.clientX;
+        let y = e.clientY;
         if (eraserEnabled) {
             context.clearRect(x - 10, y - 10, 20, 20)
         } else {
@@ -127,8 +79,8 @@ function bindMouseEvent(canvas) {
 
     canvas.onmousemove = function(e) {
         e.preventDefault()
-        var x = e.clientX;
-        var y = e.clientY;
+        let x = e.clientX;
+        let y = e.clientY;
         if (using) {
             if (eraserEnabled) {
                 context.clearRect(x - 10, y - 10, 20, 20)
@@ -183,8 +135,8 @@ function listenToClick(canvas) {
     }
 
     download.onclick = function() {
-        var url = canvas.toDataURL("image/png")
-        var a = document.createElement('a')
+        let url = canvas.toDataURL("image/png")
+        let a = document.createElement('a')
         a.href = url
         a.download = '我的作品'
         a.click()
@@ -209,12 +161,66 @@ function listenToClick(canvas) {
     }
 }
 
+function listenToInput(canvas) {
+    colorSelector.oninput = function(e) {
+        penColor = e.currentTarget.value
+        deactivateColors()
+    }
+
+    paintSelector.oninput = function(e) {
+        context.clearRect(0, 0, canvas.width, canvas.height)
+        let file = e.currentTarget.files[0]
+        let url = URL.createObjectURL(file)
+        console.log(url)
+        let img = new Image()
+        img.onload = function() {
+            let offsetLeft = (canvas.width - img.width) / 2
+            let offsetTop = (canvas.height - img.height) / 2
+            context.drawImage(img, offsetLeft, offsetTop, img.width, img.height)
+        }
+        img.src = url
+        e.currentTarget.value = ''
+    }
+
+    backgroundSelector.oninput = function(e) {
+        let file = e.currentTarget.files[0]
+        let url = URL.createObjectURL(file)
+        document.body.style.backgroundImage = `url(${url})`
+    }
+}
+
+function listenToResze(canvas) {
+    window.onresize = function() {
+        resizeCanvas();
+    }
+}
+
+/*3.下面是工具函数*/
+function resizeCanvas() {
+    canvas.width = document.documentElement.clientWidth
+    canvas.height = document.documentElement.clientHeight
+}
+
+function drawLine(lastPoint, newPoint) {
+    context.beginPath();
+    context.lineWidth = penWidth;
+    context.strokeStyle = penColor;
+
+    context.lineCap = 'round'  //保证画粗笔不会出现毛线
+    context.lineJoin = 'round'
+
+    context.moveTo(lastPoint.x, lastPoint.y);
+    context.lineTo(newPoint.x, newPoint.y);
+    context.stroke();
+    context.closePath();
+}
+
 function activateColor(el) {
-    removeOtherColor()
+    deactivateColors()
     el.classList.add('active')
 }
 
-function removeOtherColor() {
+function deactivateColors() {
     let colors = document.getElementsByClassName('color')
     for(let i=0; i<colors.length; i++) {
         colors[i].classList.remove('active')
