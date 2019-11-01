@@ -1,0 +1,19 @@
+/* 工具栏 */
+.controller {left: inherit;right: 5%;flex-direction: column;
+}
+.controller >div {border-left: none;padding: 1em 0;height: inherit;width: 2.5em;flex-direction: column;
+}
+
+/* 图标 */
+.icon {margin: .5em 0;
+}
+
+/* 调色盘 */
+.colorPad {margin-top: -2.5em;
+}
+.color {margin: .5em 0;
+}
+
+/* 滑动选择器 */
+.sizePad, .slidecontainer {display: none;
+}

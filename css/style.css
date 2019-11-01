@@ -3,9 +3,11 @@
 body {position: fixed;margin: 0;overflow: hidden;background-size: cover;background-repeat: no-repeat;
 }
 
+/* 画布 */
 #painter {position: fixed;top: 0;left: 0;
 }
 
+/* 工具栏 */
 .controller {position: fixed;top: 5%;left: 5%;display: flex;
 }
 .controller >div {border-left: 1px solid red;padding: 0 1em;height: 2.5em;display: flex;justify-content: center;align-items: center;
@@ -13,6 +15,7 @@ body {position: fixed;margin: 0;overflow: hidden;background-size: cover;backgrou
 .controller >div:first-child {border-left: none;
 }
 
+/* 图标 */
 .icon {width: 2.5em;height: 2.5em;vertical-align: -.4em;fill: currentColor;overflow: hidden;margin: 0 .5em;transition: all .3s;
 }
 .icon.active {fill: red;transform: scale(1.2);
@@ -20,17 +23,7 @@ body {position: fixed;margin: 0;overflow: hidden;background-size: cover;backgrou
 .icon:hover {transform: scale(1.2);
 }
 
-.size {width: 2.5em;height: 2.5em;margin: 0 .5em;display: flex;justify-content: center;align-items: center;
-}
-.size .size-inner {width: 2.5em;height: 1em;background-color: black;
-}
-.size.active .size-inner{background-color: red;
-}
-#bold .size-inner{height: 1.25em;
-}
-#thin .size-inner {height: .75em;
-}
-
+/* 调色盘 */
 .color {width: 2em;height: 2em;border-radius: 50%;transition: all .3s;margin: 0 .5em;
 }
 .color.active {transform: scale(1.25);box-shadow: 0px 0px 4px 2px #bbb;
@@ -44,6 +37,7 @@ body {position: fixed;margin: 0;overflow: hidden;background-size: cover;backgrou
 .color:nth-child(4) {background-color: blue;
 }
 
+/* 滑动选择器 */
 .slidecontainer {width: 100%;position: relative;
 }
 .slider {-webkit-appearance: none;width: 100%;height: .75em;border-radius: 1em;background: #d3d3d3;outline: none;opacity: 0.7;-webkit-transition: .2s;transition: opacity .2s;

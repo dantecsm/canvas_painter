@@ -4,9 +4,10 @@
 <head>
   <meta name="description" content="[add your bin description]画布" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/mobile.css" media="screen and (max-width: 800px)">
   <meta charset="utf-8">
-  <title>简画</title>
+  <title>我的画板</title>
 </head>
 
 <body>
@@ -47,7 +48,7 @@
 			<div class='color' data-source='green'></div>
 			<div class='color' data-source='blue'></div>
 	  </div>
-	  <div class="subTool" style="display:none;">
+	  <div class="subTool" style="display: none;">
 	  	<input type="color" id="colorSelector">
 	  	<input type="color" id="frequentColorSelector">
 	  	<input type="file" id="paintSelector">
@@ -55,7 +56,8 @@
 	  </div>
 	</div>
   <script src="https://at.alicdn.com/t/font_730196_qpeggy8cy2l.js"></script>
-  <script src="main.js"></script>
+  <script src="./js/util.js"></script>
+  <script src="./js/main.js"></script>
 </body>
 
 </html>
