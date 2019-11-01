@@ -3,20 +3,11 @@ function resizeCanvas() {
     canvas.height = document.documentElement.clientHeight
 }
 
-function drawLine(lastPoint, newPoint) {
-    context.beginPath();
-    context.lineWidth = penWidth;
-    context.strokeStyle = penColor;
-    context.lineCap = 'round'  //保证画粗笔不会出现毛线
-    context.lineJoin = 'round'
+function drawBezierLine([p1, p2, p3, p4], penWidth, penColor) {
+    // 记录用户动作
+    addCommand(drawBezierLine, arguments)
 
-    context.moveTo(lastPoint.x, lastPoint.y);
-    context.lineTo(newPoint.x, newPoint.y);
-    context.stroke();
-    context.closePath();
-}
-
-function drawBezierLine([p1, p2, p3, p4]) {
+    //保证画粗笔不会出现毛线
     context.beginPath();
     context.lineWidth = penWidth;
     context.strokeStyle = penColor;
@@ -26,6 +17,17 @@ function drawBezierLine([p1, p2, p3, p4]) {
     context.moveTo(p1.x, p1.y)
     context.bezierCurveTo(p2.x, p2.y, p3.x, p3.y, p4.x, p4.y)
     context.stroke()
+}
+
+function clearCanvas() {
+    context.clearRect(0, 0, canvas.width, canvas.height)
+}
+
+function wipeCanvas({x, y}, size) {
+    // 记录用户动作
+    addCommand(wipeCanvas, arguments)
+
+    context.clearRect(x - size/2, y - size/2, size, size)
 }
 
 function activateColor(el) {

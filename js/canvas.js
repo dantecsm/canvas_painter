@@ -26,9 +26,9 @@ function onCanvasMousedown (e) {
       let x = e.clientX;
       let y = e.clientY;
       if (eraserEnabled) {
-          context.clearRect(x - 10, y - 10, 20, 20)
+        wipeCanvas({x, y}, eraserSize)
       } else {
-          bezierQueue = [{x, y}, {x, y}, {x, y}]
+        bezierQueue = [{x, y}, {x, y}, {x, y}]
       }
 }
 
@@ -38,12 +38,12 @@ function onCanvasMousemove (e) {
     let y = e.clientY;
     if (using) {
         if (eraserEnabled) {
-            context.clearRect(x - 10, y - 10, 20, 20)
+            wipeCanvas({x, y}, eraserSize)
             canvas.className = 'eraserOn'
         } else {
             bezierQueue.push({x, y})
             if(bezierQueue.length === 4) {
-                drawBezierLine(bezierQueue)
+                drawBezierLine(bezierQueue, penWidth, penColor)
                 bezierQueue.splice(0, 3)
             }
         }
@@ -67,7 +67,7 @@ function onCanvasTouchstart(e) {
     let x = e.touches[0].clientX;
     let y = e.touches[0].clientY;
     if (eraserEnabled) {
-        context.clearRect(x - 10, y - 10, 20, 20)
+        wipeCanvas({x, y}, eraserSize)
     } else {
         bezierQueue = [{x, y}, {x, y}, {x, y}]
     }
@@ -79,11 +79,11 @@ function onCanvasTouchmove(e) {
     let y = e.touches[0].clientY;
     if (using) {
         if (eraserEnabled) {
-            context.clearRect(x - 10, y - 10, 20, 20)
+            wipeCanvas({x, y}, eraserSize)
         } else {
              bezierQueue.push({x, y})
             if(bezierQueue.length === 4) {
-                drawBezierLine(bezierQueue)
+                drawBezierLine(bezierQueue, penWidth, penColor)
                 bezierQueue.splice(0, 3)
             }
         }

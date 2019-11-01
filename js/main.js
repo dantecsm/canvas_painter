@@ -6,6 +6,7 @@ let using = false;
 let eraserEnabled = false;
 let penWidth = 7;
 let penColor = 'black';
+let eraserSize = 20;
 let bezierQueue = [];
 
 let PEN_WIDTH_MIN = 1

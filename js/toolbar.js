@@ -49,7 +49,7 @@ function onBackgroundClick() {
 }
 
 function onClearClick() {
-    context.clearRect(0, 0, canvas.width, canvas.height)
+    clearCanvas()
 }
 
 function onDownloadClick() {
