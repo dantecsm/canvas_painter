@@ -1,11 +1,4 @@
-let hinted = localStorage.getItem('hinted')
-if(!hinted) {
-	localStorage.setItem('hinted', true)
-	startTutorial()
-}
-
-function startTutorial() {
-	let steps = [
+let PCTutorial = [
 		{
 		  element: '#background',
 		  intro: '临摹工具，可临摹本地图片'
@@ -21,8 +14,36 @@ function startTutorial() {
 		{
 		  element: '.colorPad',
 		  intro: '双击调色盘定义常用颜色，单击调色盘快捷使用'
+		},
+		{
+			element: '#pen',
+			intro: '按 Ctrl + Z 可撤销画笔或橡皮操作'
 		}
 	]
+
+let mobileTutorial = [
+		{
+		  element: '#background',
+		  intro: '临摹工具，可临摹本地图片'
+		},
+		{
+		  element: '#openFile',
+		  intro: '编辑工具，可编辑本地图片'
+		},
+		{
+		  element: '.colorPad',
+		  intro: '单击调色盘使用颜色'
+		}
+	]
+
+let hinted = localStorage.getItem('hinted')
+if(!hinted) {
+	localStorage.setItem('hinted', true)
+	startTutorial()
+}
+
+function startTutorial() {
+	let steps = isNarrowScreen() ? mobileTutorial : PCTutorial
 
 	introJs()
 	.setOptions({steps})

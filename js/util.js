@@ -57,3 +57,7 @@ function bindEvents(hash) {
 function canTouch() {
     return document.body.ontouchstart!==undefined
 }
+
+function isNarrowScreen() {
+    return document.documentElement.clientWidth <= 800
+}
