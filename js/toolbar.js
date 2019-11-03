@@ -66,6 +66,7 @@ function onSizeInput(e) {
 
 function onColorPadClick(e) {
     penColor = e.target.dataset.source
+    colorSelector.value = penColor
     activateColor(e.target)
 }
 
@@ -73,7 +74,10 @@ function onColorPadDblclick(e) {
     frequentColorSelector.click()
     let that = e.target
     frequentColorSelector.oninput = function() {
-        penColor = that.style.backgroundColor = that.dataset.source = this.value
+        that.dataset.source = this.value
+        that.style.backgroundColor = this.value
+        penColor = this.value
+        colorSelector.value = this.value
         this.value = ''
     }
 }

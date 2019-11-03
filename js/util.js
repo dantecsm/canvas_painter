@@ -20,6 +20,9 @@ function drawBezierLine([p1, p2, p3, p4], penWidth, penColor) {
 }
 
 function clearCanvas() {
+    // 记录用户动作
+    addCommand(clearCanvas, arguments)
+
     context.clearRect(0, 0, canvas.width, canvas.height)
 }
 
