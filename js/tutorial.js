@@ -17,7 +17,7 @@ let PCTutorial = [
 		},
 		{
 			element: '#pen',
-			intro: '按 Ctrl + Z 可撤销画笔或橡皮操作'
+			intro: '按或按住 Ctrl + Z 撤销上一步操作，按或按住 Ctrl + Y 反撤销'
 		}
 	]
 
