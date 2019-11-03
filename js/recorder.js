@@ -12,7 +12,7 @@ function addCommand(fn, args) {
 }
 
 function undo() {
-	if(stackTop > 0) {
+	if(stackTop >= 0) {
 		stackTop -= 1
 	  redrawing = true
 	  redraw()
