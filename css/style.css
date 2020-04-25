@@ -48,5 +48,5 @@ body {position: fixed;margin: 0;overflow: hidden;background-size: cover;backgrou
 }
 .slider::-moz-range-thumb {width: 1.25em;height: 1.25em;border-radius: 50%;background: black;cursor: pointer;
 }
-.slidecontainer .value {position: absolute;top: -1em;left: 22%;margin-left: -.5em;font-size: 1px;color: grey;
+.slidecontainer .value {position: absolute;top: -1em;left: 22%;margin-left: -.5em;font-size: 12px;color: grey;
 }
