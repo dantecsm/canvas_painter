@@ -47,10 +47,10 @@ function deactivateColors() {
 
 function setPenWidth(value) {
     if(value < PEN_WIDTH_MIN || value > PEN_WIDTH_MAX) return
-    penWidth = size.value = parseInt(value)
+    penWidth = size.value = value
     let left = value * (92 - 7) / (40 - 1) + 5
     sizeVal.style.left = `${left}%`
-    sizeVal.innerText = value
+    sizeVal.innerText = parseInt(value)
 }
 
 function bindEvents(hash) {
